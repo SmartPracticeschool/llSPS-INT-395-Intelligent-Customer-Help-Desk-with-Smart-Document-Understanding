@@ -1,12 +1,6 @@
 # llSPS-INT-395-Intelligent-Customer-Help-Desk-with-Smart-Document-Understanding
 Intelligent Customer Help Desk with Smart Document Understanding
 
-```diff
-- text in red
-+ text in green
-! text in orange
-# text in gray
-```
 - Category: Artificial Intelligence
 
 Skills Required:
