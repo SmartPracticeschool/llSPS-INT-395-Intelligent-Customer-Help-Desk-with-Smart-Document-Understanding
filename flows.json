@@ -1,0 +1,174 @@
+[
+    {
+        "id": "42a73c16.648144",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "77cbab9c.ab3024",
+        "type": "ui_form",
+        "z": "42a73c16.648144",
+        "name": "",
+        "label": "Enter Query",
+        "group": "dfcff95a.1fd458",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "options": [
+            {
+                "label": "Enter",
+                "value": "input",
+                "type": "text",
+                "required": true,
+                "rows": null
+            }
+        ],
+        "formValue": {
+            "input": ""
+        },
+        "payload": "",
+        "submit": "submit",
+        "cancel": "cancel",
+        "topic": "",
+        "x": 90,
+        "y": 220,
+        "wires": [
+            [
+                "4f3c0b17.bcc2b4",
+                "6d94dcc4.7e3574"
+            ]
+        ]
+    },
+    {
+        "id": "4f3c0b17.bcc2b4",
+        "type": "function",
+        "z": "42a73c16.648144",
+        "name": "",
+        "func": "/*msg={\n    discovery_params:\n    {\n        \"environment_id\":\"system\",\n        \"query\":msg.payload.input\n    }\n}*/\nmsg.payload=msg.payload.input;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 250,
+        "y": 220,
+        "wires": [
+            [
+                "40094bdb.635d64"
+            ]
+        ]
+    },
+    {
+        "id": "834ceeb2.37f5b",
+        "type": "function",
+        "z": "42a73c16.648144",
+        "name": "",
+        "func": "//msg.payload=msg.search_results[0].text\nmsg.payload.text=\"\";\n\n\n\nif(msg.payload.context.webhook_result_1)\n{\n    for(var i in msg.payload.context.webhook_result_1.passages)\n    {\n        msg.payload.text=msg.payload.text+\"\\n\"+msg.payload.context.webhook_result_1.passages[i].passage_text;\n    }\n    msg.payload=msg.payload.text;\n    console.log(\"webhook\")\n}\nelse\nmsg.payload=msg.payload.output.text[0];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 550,
+        "y": 200,
+        "wires": [
+            [
+                "42e93b62.a47264",
+                "fc7df481.f7afd8"
+            ]
+        ]
+    },
+    {
+        "id": "42e93b62.a47264",
+        "type": "debug",
+        "z": "42a73c16.648144",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 690,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "fc7df481.f7afd8",
+        "type": "ui_text",
+        "z": "42a73c16.648144",
+        "group": "c84831.a9c907d",
+        "order": 1,
+        "width": "9",
+        "height": "4",
+        "name": "",
+        "label": "",
+        "format": "{{msg.payload}}",
+        "layout": "row-left",
+        "x": 690,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "40094bdb.635d64",
+        "type": "watson-conversation-v1",
+        "z": "42a73c16.648144",
+        "name": "Assistant",
+        "workspaceid": "6e5d4e39-cc1b-41c2-900f-824fc2fe098d",
+        "multiuser": false,
+        "context": false,
+        "empty-payload": false,
+        "service-endpoint": "https://api.eu-gb.assistant.watson.cloud.ibm.com/instances/56d2762c-582e-4980-b808-628b6a6782a2",
+        "timeout": "",
+        "optout-learning": false,
+        "x": 380,
+        "y": 120,
+        "wires": [
+            [
+                "834ceeb2.37f5b"
+            ]
+        ]
+    },
+    {
+        "id": "6d94dcc4.7e3574",
+        "type": "debug",
+        "z": "42a73c16.648144",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 240,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "dfcff95a.1fd458",
+        "type": "ui_group",
+        "z": "",
+        "name": "Customer Help",
+        "tab": "199a4959.b95a57",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "c84831.a9c907d",
+        "type": "ui_group",
+        "z": "",
+        "name": "Output",
+        "tab": "199a4959.b95a57",
+        "order": 2,
+        "disp": true,
+        "width": "11",
+        "collapse": false
+    },
+    {
+        "id": "199a4959.b95a57",
+        "type": "ui_tab",
+        "z": "",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
