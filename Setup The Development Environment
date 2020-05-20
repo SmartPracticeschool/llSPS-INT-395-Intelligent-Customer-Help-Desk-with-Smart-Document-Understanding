@@ -1,6 +1,8 @@
-Skill Tags: PMC
+## Setup The Development Environment
 
-Project development environment is very important for the successful execution of the project. You should have answers to below questions before starting your porject
+-Skill Tags: PMC
+
+- Project development environment is very important for the successful execution of the project. You should have answers to below questions before starting your porject
 
 Where do you develop the code ? 
 where do you save it ? 
@@ -8,7 +10,7 @@ how do you communicate with your team ?
 Where do you document your work ? 
 How do you share deliverables with your client ?
 
-Utilize the integrations provided in SmartInternz Platform
+ # Utilize the integrations provided in SmartInternz Platform
 1. Create your GitHub Account, Install GIT tool in your PC/Laptop
 2. Create the Project Scope in the Document Writer
 3. Install Slack App, Join your team to the Project Channel
